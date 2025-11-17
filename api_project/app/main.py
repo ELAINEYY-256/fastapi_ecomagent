@@ -1,7 +1,8 @@
 
 from fastapi import FastAPI
 from app.database import Base, engine
-from app.routers import user
+from app.routers import user, lead, agent
+
 
 app = FastAPI(title="EcomAgent API")
 
@@ -17,6 +18,8 @@ app = FastAPI(title="EcomAgent API")
 Base.metadata.create_all(bind=engine)
 
 app.include_router(user.router)
+app.include_router(lead.router)
+app.include_router(agent.router)
 
 @app.get("/")
 def root():

@@ -10,33 +10,25 @@ class LeadStatus(str, Enum):
     disqualified = "disqualified"
 
 
-class LeadBase(BaseModel):
+class LeadCreate(BaseModel):
     name: str
     contact_info: str
     source: Optional[str] = None
     interest_level: Optional[str] = None
-    status: Optional[LeadStatus] = LeadStatus.new
     notes: Optional[str] = None
     assigned_agent_id: Optional[int] = None
 
 
-
-class LeadCreate(LeadBase):
-    pass 
-
-
-class LeadUpdate(BaseModel):
-    name: Optional[str] = None
-    contact_info: Optional[str] = None
-    source: Optional[str] = None
-    interest_level: Optional[str] = None
-    status: Optional[LeadStatus] = None
-    notes: Optional[str] = None
-    assigned_agent_id: Optional[int] = None
-
-
-class LeadOut(LeadBase):
+class LeadOut(BaseModel):
     id: int
+    name: str
+    contact_info: str
+    source: Optional[str]
+    interest_level: Optional[str]
+    status: LeadStatus
+    notes: Optional[str]
+    assigned_agent_id: Optional[int]
 
-    class Config:
-        from_attributes = True
+    model_config = {
+        "from_attributes": True
+    }

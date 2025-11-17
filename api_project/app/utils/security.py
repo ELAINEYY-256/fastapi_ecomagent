@@ -25,9 +25,9 @@ if not SECRET_KEY:
         "SECRET_KEY not found in environment. Add SECRET_KEY to your .env file "
         "(e.g. SECRET_KEY='$(openssl rand -hex 32)')"
     )
-
-
 def hash_password(password: str) -> str:
+    if len(password.encode("utf-8")) > 72:
+        password = password[:72]  
     return pwd_context.hash(password)
 
 
