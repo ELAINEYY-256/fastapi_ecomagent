@@ -17,4 +17,10 @@ class Agent(Base):
     clients = relationship("Client", back_populates="agent")
     orders = relationship("Order", back_populates="agent")
 
+    company_id = Column(Integer, ForeignKey("companies.id", ondelete="SET NULL"), nullable=True)
+    company = relationship("Company", back_populates="agents")
+   
+
+
+
 

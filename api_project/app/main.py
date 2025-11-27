@@ -1,7 +1,8 @@
 
-from fastapi import FastAPI
+from fastapi import FastAPI, Depends
 from app.database import Base, engine
-from app.routers import user, lead, agent
+from app.routers import user, lead, agent, company, branch
+from app.utils.auth_user import get_current_user
 
 
 app = FastAPI(title="EcomAgent API")
@@ -17,9 +18,23 @@ app = FastAPI(title="EcomAgent API")
 
 Base.metadata.create_all(bind=engine)
 
-app.include_router(user.router)
-app.include_router(lead.router)
-app.include_router(agent.router)
+app.include_router(
+    user.router
+    )
+
+app.include_router(
+    lead.router,
+    dependencies=[Depends(get_current_user)]
+    )
+
+app.include_router(
+    agent.router,
+    dependencies=[Depends(get_current_user)]
+    )
+
+app.include_router(company.router)
+app.include_router(branch.router)
+
 
 @app.get("/")
 def root():
