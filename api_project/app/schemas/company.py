@@ -15,3 +15,5 @@ class CompanyOut(CompanyBase):
 
     class Config:
         from_attributes = True
+
+

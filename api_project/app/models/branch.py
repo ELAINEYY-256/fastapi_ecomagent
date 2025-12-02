@@ -16,6 +16,4 @@ class Branch(Base):
     is_head_branch = Column(Boolean, default=False)
 
     company = relationship("Company", back_populates="branches")
-  
-
-
+    users = relationship("UserBranch", back_populates="branch")

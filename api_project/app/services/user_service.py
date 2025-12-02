@@ -53,8 +53,15 @@ class UserService:
                     status_code=status.HTTP_401_UNAUTHORIZED,
                     detail="Invalid email or password"
                 )
+            
+            token_payload = {
+                "sub": user.email,
+                "user_id": user.id,
+                "company_id": user.company_id,
+                "role": user.role,
+            }
 
-            token = create_access_token({"sub": user.email})
+            token = create_access_token(token_payload)
             return {"access_token": token, "token_type": "bearer"}
 
         except Exception as e:
@@ -65,3 +72,7 @@ class UserService:
 
         finally:
             db.close()
+
+
+
+          

@@ -9,7 +9,7 @@ class Company(Base):
     name = Column(String, nullable=False, unique=True)
 
     branches = relationship("Branch", back_populates="company")
-    agents = relationship("Agent", back_populates="company")
-
+    agents = relationship("Agent", back_populates="company", cascade="all, delete-orphan")
+    users = relationship("User", back_populates="company", cascade="all, delete-orphan")
 
 

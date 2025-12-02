@@ -1,7 +1,7 @@
 
 from fastapi import FastAPI, Depends
 from app.database import Base, engine
-from app.routers import user, lead, agent, company, branch
+from app.routers import user, lead, agent, company, branch, onboarding
 from app.utils.auth_user import get_current_user
 
 
@@ -34,6 +34,9 @@ app.include_router(
 
 app.include_router(company.router)
 app.include_router(branch.router)
+
+app.include_router(onboarding.router)
+
 
 
 @app.get("/")

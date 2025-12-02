@@ -7,3 +7,4 @@ from app.models.order import Order
 from app.models.inventory_log import InventoryLog
 from app.models.company import Company
 from app.models.branch import Branch
+from app.models.user_branch import UserBranch
