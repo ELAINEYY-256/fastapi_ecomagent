@@ -1,5 +1,6 @@
 from app.services.agent_service import AgentService
 
+
 class AgentController:
 
     @staticmethod
