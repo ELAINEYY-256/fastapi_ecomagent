@@ -3,8 +3,10 @@ from fastapi import HTTPException, status
 from app.models.company import Company
 from app.models.branch import Branch
 from app.models.user import User
+from app.services.user_service import UserService
 from app.database import SessionLocal
 from app.utils.security import hash_password, create_access_token
+
 
 
 class OnboardingService:

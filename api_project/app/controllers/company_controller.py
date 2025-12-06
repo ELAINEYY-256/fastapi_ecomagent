@@ -1,5 +1,6 @@
 from app.services.company_service import CompanyService
 
+
 class CompanyController:
 
     @staticmethod

@@ -1,5 +1,6 @@
 from app.services.branch_service import BranchService
 
+
 class BranchController:
 
     @staticmethod

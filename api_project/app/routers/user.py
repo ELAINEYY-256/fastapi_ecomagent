@@ -10,6 +10,7 @@ controller = UserController()
 
 @router.post("/adduser", response_model=UserOut)
 def add_user(user: UserCreate):
+    # get all required data from the request
     return controller.register_user(
         name=user.name,
         email=user.email,
