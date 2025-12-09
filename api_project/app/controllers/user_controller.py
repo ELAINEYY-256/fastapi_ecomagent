@@ -68,7 +68,7 @@ class UserController:
         user = UserService.get_user_by_email(email)
         if user:
             raise HTTPException(
-                status_code=400, detail="User with this email already exists"
+                status_code=400, detail="User already exists"
             )
 
         # create user
